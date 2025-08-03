@@ -1,6 +1,6 @@
 # BFD
 
-[原文链接](https://csmantle.top/misc/networking/2024/09/22/using-bfd-in-bird2.html)
+[原文链接](https://csmantle.top/2024/09/22/using-bfd-in-bird2.html)
 
 > 本文为 [DN11](https://dn11.top/) 项目编写.
 >
