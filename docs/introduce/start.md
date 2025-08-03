@@ -12,31 +12,47 @@ DN11全称为 “11号去中心化网络”（Decentralized Network 11），~~�
 
 [DN11信息表](https://github.com/dn-11/metadata/blob/main/README.md)
 
-新同学修网 RoadMap
+我应该在 DN11 做些什么？
 
 ```mermaid
-flowchart TD
-    WireGuard --> EBGP
-    OpenVPN .-> EBGP
-    ... .-> EBGP
+mindmap
+    root((DN11))
+        链路质量
+            隧道
+                WireGuard
+                OpenVPN
+                L2TP
+                隧道套娃
+                隧道开发
+            BFD
+            物理层与硬件
+            物理 IX
+        内部建设
+            OSPF
+            IBGP
+                RR
+                    多级RR
+                BGP联邦
+        网络安全
+            路由安全
+                ROA
+                    RPKI
+                AS-SET
+                BGPSec
+            攻击面管理
+            DN11 CA
+                ACME
+        内容建设
+            DNS
+                DN11 DNS
+                权威 DNS
+                rDNS
+            媒体库
+            BT/PT
+            游戏服务器
+        外部路由
+            BGP
+                Large Community
+                Auto Peer
+                IX
 
-    EBGP --网络质量--> BFD
-    BFD --> LargeCommunity
-
-    EBGP --路由安全--> ROA
-    ROA --> RPKI
-    
-    EBGP --内部网络--> OSPF
-    OSPF --> IBGP
-    IBGP --> RR
-    RR --> 多级RR
-    IBGP --> BGP联邦
-
-    EBGP --域名服务--> DNS分流
-    DNS分流 --> CA证书
-    CA证书 --> ACME
-    DNS分流 --> 权威DNS
-    权威DNS --> rDNS
-
-    DNS分流 --内容服务--> emby,pt,alist,...
-```
