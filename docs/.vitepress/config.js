@@ -86,6 +86,7 @@ export default withMermaid(
             { text: "BFD", link: "/connect/bfd" },
             { text: "Route Collector", link: "/connect/collector" },
             { text: "ROA", link: "/connect/roa" },
+            { text: "Large Community", link: "/connect/large-community"}
           ],
         },
         {
