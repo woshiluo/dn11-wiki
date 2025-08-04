@@ -106,6 +106,7 @@ export default withMermaid(
             { text: "DDNS", link: "/mics/ddns" },
             { text: "DNS", link: "/mics/dns" },
             { text: "RDNS", link: "/mics/rdns" },
+            { text: "CA", link: "/mics/ca"}
           ],
         },
         {
