@@ -53,6 +53,7 @@ mindmap
         外部路由
             BGP
                 Large Community
+                MED
                 Auto Peer
                 IX
 
