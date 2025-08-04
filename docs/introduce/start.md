@@ -56,4 +56,5 @@ mindmap
                 MED
                 Auto Peer
                 IX
+            IPv6
 
