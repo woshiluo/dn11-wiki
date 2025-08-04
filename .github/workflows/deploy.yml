@@ -1,0 +1,58 @@
+name: Build and Deploy to External Repository
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Build
+      run: npm run docs:build
+      
+    - name: Deploy to external repository
+      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+      run: |
+        # 配置Git用户信息
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+        
+        # 克隆目标仓库
+        git clone https://x-access-token:${{ secrets.EXTERNAL_REPO_TOKEN }}@github.com/camera-2018/dn11-wiki-dist.git external-repo
+        
+        # 进入目标仓库目录
+        cd external-repo
+        
+        # 检查是否存在main分支，如果不存在则创建
+        if ! git show-ref --verify --quiet refs/remotes/origin/main; then
+          git checkout --orphan main
+        else
+          git checkout main
+        fi
+        
+        # 清空目标仓库内容（保留.git目录）
+        git rm -rf . || true
+        
+        # 复制构建文件
+        cp -r ../dist/* .
+        
+        # 提交并推送
+        git add .
+        git commit -m "Auto deploy from dn11-wiki - $(date)"
+        git push origin main
