@@ -42,13 +42,15 @@ mindmap
             攻击面管理
             DN11 CA
                 ACME
-        内容建设
+        应用建设
             DNS
                 DN11 DNS
                 权威 DNS
                 rDNS
-            媒体库
+            docker
+                kubernetes
             BT/PT
+                媒体库
             游戏服务器
         外部路由
             BGP
